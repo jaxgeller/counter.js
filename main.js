@@ -1,32 +1,33 @@
 export default class Counter {
 
   constructor(opts) {
-    let from = opts.from;
-    let to = opts.to;
-    this.duration = opts.duration;
+    this.start = 0;
+    this.end = 10;
 
-    this.refresh = 100;
+    this.duration = 2000;
+
     this.selector = opts.selector;
-    this.current = from;
-    this.tickIncrement = (to - from) / (this.duration/this.refresh);
-    this.done = opts.done;
-    this.max = opts.to
-    console.log(`From ${from} to ${to} in ${this.duration}s with a refresh of ${this.refresh} and inc rate ${this.tickIncrement}`)
-
   }
 
-  tick() {
-    this.current += this.tickIncrement;
-    this.selector.textContent = Math.round(this.current);
+  tick(currentTime) {
+    if(!this.timeStart) this.timeStart = currentTime;
+    this.timeElapsed = currentTime - this.timeStart;
 
-    console.log(this.current)
+    this.next = this.ease(this.timeElapsed, this.start, this.end - this.start, this.duration);
+    this.next = Math.round(this.next);
 
+    this.selector.textContent = this.next;
 
-    if (this.current < this.max)
-      return setTimeout(this.tick.bind(this), this.refresh);
-
-    return this.done();
+    if (this.next < this.end)
+      requestAnimationFrame((time)=> this.tick(time))
   }
 
-  run() { this.tick(); }
+  run() {
+    requestAnimationFrame(this.tick.bind(this));
+  }
+
+  // t: current time, b: begInnIng value, c: change In value, d: duration
+  ease(t, b, c, d) {
+    return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
+  }
 }
