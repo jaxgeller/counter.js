@@ -1,33 +1,31 @@
 export default class Counter {
 
   constructor(opts) {
-    this.start = 0;
-    this.end = 10;
-
-    this.duration = 2000;
-
+    this.start = opts.start;
+    this.end = opts.end;
     this.selector = opts.selector;
-  }
-
-  tick(currentTime) {
-    if(!this.timeStart) this.timeStart = currentTime;
-    this.timeElapsed = currentTime - this.timeStart;
-
-    this.next = this.ease(this.timeElapsed, this.start, this.end - this.start, this.duration);
-    this.next = Math.round(this.next);
-
-    this.selector.textContent = this.next;
-
-    if (this.next < this.end)
-      requestAnimationFrame((time)=> this.tick(time))
+    this.done = opts.done;
+    this.duration = opts.duration || 2000;
   }
 
   run() {
-    requestAnimationFrame(this.tick.bind(this));
+    requestAnimationFrame(this._tick.bind(this));
   }
 
-  // t: current time, b: begInnIng value, c: change In value, d: duration
-  ease(t, b, c, d) {
+  _tick(currentTime) {
+    if(!this.timeStart) this.timeStart = currentTime;
+
+    this.timeElapsed = currentTime - this.timeStart;
+    this.next = this._ease(this.timeElapsed, this.start, this.end - this.start, this.duration);
+    this.selector.textContent = Math.round(this.next);
+
+    if (this.next < this.end)
+      return requestAnimationFrame(this._tick.bind(this));
+
+    return this.done();
+  }
+
+  _ease(t, b, c, d) {
     return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
   }
 }
