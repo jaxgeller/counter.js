@@ -4,7 +4,7 @@
   "description": "",
   "main": "counter.js",
   "scripts": {
-    "build": "watchify --standalone Counter -t babelify -t uglifyify main.js -o bundle.js"
+    "build": "watchify --standalone Counter -t babelify -t uglifyify counter.js -o dist.min.js"
   },
   "repository": {
     "type": "git",
