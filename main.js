@@ -9,21 +9,33 @@ export default class Counter {
   }
 
   run() {
-    requestAnimationFrame(this._tick.bind(this));
+    if (parseInt(this.selector.textContent) !== this.end) {
+      requestAnimationFrame(this._tick.bind(this));
+    }
   }
 
   _tick(currentTime) {
-    if(!this.timeStart) this.timeStart = currentTime;
+    let self = this; // uglify doesnt like to minify this
 
-    this.timeElapsed = currentTime - this.timeStart;
-    this.next = this._ease(this.timeElapsed, this.start, this.end - this.start, this.duration);
-    this.selector.textContent = Math.round(this.next);
+    if(!self.timeStart) self.timeStart = currentTime;
 
-    if (this.next < this.end)
-      return requestAnimationFrame(this._tick.bind(this));
+    self.timeElapsed = currentTime - self.timeStart;
 
-    return this.done();
+    let next = self._ease(self.timeElapsed, self.start, self.end - self.start, self.duration);
+    self.selector.textContent = Math.round(next);
+
+
+    if (this.end < this.start) {
+      if (next > self.end)
+        return requestAnimationFrame(self._tick.bind(self));
+    } else {
+      if (next < self.end)
+        return requestAnimationFrame(self._tick.bind(self));
+    }
+
+    return self.done();
   }
+
 
   _ease(t, b, c, d) {
     return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
