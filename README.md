@@ -20,7 +20,7 @@ const opts = {
   }
 }
 
-let c = new Counter(opts);
+const c = new Counter(opts);
 
 document.querySelector('.button').onclick = c.run();
 ```
