@@ -9,6 +9,7 @@ An animated counter
 
 ```javascript
 import Counter from "counter.js";
+// or if no es6, include dist.min.js
 
 const opts = {
   start: 0,
