@@ -22,6 +22,7 @@ export default class Counter {
     self.timeElapsed = currentTime - self.timeStart;
 
     let next = self._ease(self.timeElapsed, self.start, self.end - self.start, self.duration);
+
     self.selector.textContent = Math.round(next);
 
 

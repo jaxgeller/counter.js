@@ -2,9 +2,8 @@
   "name": "counter.js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "counter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "watchify --standalone Counter -t babelify -t uglifyify main.js -o bundle.js"
   },
   "repository": {
@@ -21,8 +20,6 @@
     "babel": "^5.8.23",
     "babelify": "^6.3.0",
     "browserify": "^11.1.0",
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3",
     "uglifyify": "^3.0.1",
     "watchify": "^3.4.0"
   }
