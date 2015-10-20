@@ -1,7 +1,7 @@
-[demo](https://jaxgeller.com/projects/counter.js/)
-
 # Counter.js
-An animated counter
+Counter.js is a slim (less than 1kb gzipped), performant, es6 module, that counts numbers. It uses RAF and easing functions to provide a buttery-smooth, 60-fps counter.
+
+You can check out the [demo here](https://jaxgeller.com/projects/counter.js/)
 
 
 
