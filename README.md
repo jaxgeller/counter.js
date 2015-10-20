@@ -1,5 +1,9 @@
+[demo](https://jaxgeller.com/projects/counter.js/)
+
 # Counter.js
 An animated counter
+
+
 
 ### Install
 
