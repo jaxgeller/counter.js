@@ -7,7 +7,7 @@ You can check out the [demo here](https://jaxgeller.com/projects/counter.js/)
 
 ### Install
 
-`npm install counter.js`
+`npm install counter.js` or include `dist.min.js` above
 
 ### Use
 
