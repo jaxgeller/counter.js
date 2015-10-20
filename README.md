@@ -1,42 +1,32 @@
 # Counter.js
-Counter.js is a slim (less than 1kb gzipped), performant, es6 module, that counts numbers. It uses RAF and easing functions to provide a buttery-smooth, 60-fps counter.
+Counter.js is a slim (less than 1kb gzipped), performant, ES6 module, that counts numbers. It uses RAF and easing functions to provide a buttery-smooth, 60-fps counter.
 
-You can check out the [demo here](https://jaxgeller.com/projects/counter.js/)
-
-
+You can check out the [demo here.](https://jaxgeller.com/projects/counter.js/)
 
 ### Install
 
-`npm install counter.js` or include `dist.min.js` above
+`npm install counter.js` or include `dist.min.js` above.
 
-### Use
+### Example
 
 ```javascript
+// if you’re not using a module bundler, include dist.min.js instead
 import Counter from "counter.js";
-// or if no es6, include dist.min.js
 
+// set your desired options
 const opts = {
   start: 0,
-  end: 98765,
+  end: 100,
   selector: document.getElementById('count'),
-  done: function() {
-    console.log('fired when done');
+  done: () => {
+    // callback...
   }
-}
+};
 
-const c = new Counter(opts);
+// create an instance
+const instance = new Counter(opts);
 
-document.querySelector('.button').onclick = c.run();
+// run the counter
+const button = document.querySelector('button');
+Array.prototype.slice.call(button).addEventListener('click', instance.run);
 ```
-
-### License
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Jackson Geller
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
