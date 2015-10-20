@@ -1,7 +1,7 @@
 {
   "name": "counter.js",
-  "version": "1.0.3",
-  "description": "",
+  "version": "1.0.4",
+  "description": "Counter.js is a slim (less than 1kb gzipped), performant, es6 module, that counts numbers. It uses RAF and easing functions to provide a buttery-smooth, 60-fps counter.",
   "main": "counter.js",
   "scripts": {
     "build": "watchify --standalone Counter -t babelify -t uglifyify counter.js -o dist.min.js"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/jaxgeller/counter.js.git"
   },
-  "author": "",
+  "author": "@jaxgeller",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaxgeller/counter.js/issues"
