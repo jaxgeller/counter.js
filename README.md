@@ -27,6 +27,5 @@ const opts = {
 const instance = new Counter(opts);
 
 // run the counter
-const button = document.querySelector('button');
-Array.prototype.slice.call(button).addEventListener('click', instance.run);
+instance.run();
 ```
